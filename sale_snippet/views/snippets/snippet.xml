@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="snippets" inherit_id='website.snippets'>
+        <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]" position="after">
+            <t t-snippet="sale_snippet.sale_snippet" string="Sale Orders" 
+            t-thumbnail="/website/static/src/img/snippets_thumbs/s_product_list.svg"/>
+        </xpath>
+    </template>
+
+</odoo>
