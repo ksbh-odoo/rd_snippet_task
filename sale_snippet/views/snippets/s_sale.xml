@@ -11,8 +11,6 @@
        </section>   
     </template>
 
-
-
     <template id="sale_snippet_options" inherit_id="website.snippet_options">
         <xpath expr="." position="inside">
             <div data-js="SaleSnippetOptions" data-selector=".sale_snippet">

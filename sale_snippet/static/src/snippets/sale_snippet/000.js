@@ -1,6 +1,8 @@
 /**@odoo-module**/
 import publicWidget from "@web/legacy/js/public/public_widget";
 import { renderToElement } from "@web/core/utils/render";
+import { useService } from "@web/core/utils/hooks";
+
 
 
 
@@ -13,33 +15,30 @@ const DynamicSnippetSale = publicWidget.Widget.extend({
      */
     init: function () {
         this._super.apply(this, arguments);
-        this.rpc = this.bindService("rpc");
+        this.orm = this.bindService('orm');
     },
 
     start: async function () {
 
         let saleorderEl = this.el.querySelector("#saleorder_snippet");
-        let isOrderConfirm = this.target.dataset.orderConfirm;
-
+        
         if (saleorderEl) {
+            let isOrderConfirm = this.target.dataset.orderConfirm;
+            let domain = isOrderConfirm ? [['state','=','sale']] : [];
             let data = [];
-            let s_instance;
-            if(!isOrderConfirm){
-                data = await this.rpc("/sale_order_snippet");
-                s_instance = renderToElement('sale_order_snippet',{
+            let s_instanceEl;
+            try
+            {
+                data = await this.orm.searchRead("sale.order",domain,['id','name','partner_id','state']);
+                s_instanceEl = renderToElement('sale_order_snippet',{
                     sale_order : data
-                });
+                });   
             }
-            else{
-                data = await this.rpc("/sale_order_confirm");
-                s_instance = renderToElement('sale_order_snippet',{
-                    sale_order : data
-                });
-               
-                
+            catch(error){
+                console.error("Error fetching data:", error);
             }
             
-            saleorderEl.replaceChildren(s_instance);
+            saleorderEl.replaceChildren(s_instanceEl);
 
         } else {
             console.error("Element with id 'sale_snippet' not found.");

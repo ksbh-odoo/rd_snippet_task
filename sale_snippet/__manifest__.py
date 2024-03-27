@@ -4,7 +4,9 @@
     'description' : 'Dynamic Sale Snippet',
 
 
-    'depends' : ['base'],
+    'depends' : ['base',
+                 'sale_management',
+                 'website'],
 
     'data' : [
         'views/snippets/s_sale.xml',

@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
-
     <t t-name="sale_order_snippet" >
-    <div class="row justify-content-center">
+        <div class="row justify-content-center">
             <div class="card col-md-3" t-foreach="sale_order" t-as="order" t-key="order.id">
                 <div class="card-body" style="background-image: url('sale_snippet/static/src/img/card.jpg'); color: grey; ">
                     <h5 class="card-title"><t t-out="order.name"/></h5>
                     <p class="card-text"><t t-out="order.partner_id[1]"/></p>
                 </div>
                 <div class="card-footer text-muted">
-                    <p><t t-out="order.state"/></p>
+                    <p class="uppercase"><t t-out="order.state"/></p>
                 </div>
             </div>
-    </div>
+        </div>
     </t>
-
 </templates>
