@@ -3,7 +3,6 @@
     'name' : 'Sale Snippet',
     'description' : 'Dynamic Sale Snippet',
 
-
     'depends' : ['base',
                  'sale_management',
                  'website'],
@@ -27,6 +26,5 @@
 
     'installable' : True,
     'application' : True,
-
-     'license': 'AGPL-3'
+    'license': 'AGPL-3'
 }

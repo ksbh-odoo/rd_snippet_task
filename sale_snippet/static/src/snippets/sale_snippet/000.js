@@ -1,14 +1,12 @@
 /**@odoo-module**/
+
 import publicWidget from "@web/legacy/js/public/public_widget";
 import { renderToElement } from "@web/core/utils/render";
 import { useService } from "@web/core/utils/hooks";
 
 
-
-
 const DynamicSnippetSale = publicWidget.Widget.extend({
     selector: ".sale_snippet",
-
 
     /**
      * @constructor
@@ -36,10 +34,8 @@ const DynamicSnippetSale = publicWidget.Widget.extend({
             }
             catch(error){
                 console.error("Error fetching data:", error);
-            }
-            
+            } 
             saleorderEl.replaceChildren(s_instanceEl);
-
         } else {
             console.error("Element with id 'sale_snippet' not found.");
         }
@@ -47,8 +43,6 @@ const DynamicSnippetSale = publicWidget.Widget.extend({
     },
 
 });
-
-    
 
 publicWidget.registry.DynamicSnippetSale = DynamicSnippetSale;
 
